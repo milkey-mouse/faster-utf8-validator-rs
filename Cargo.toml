@@ -17,6 +17,11 @@ core_affinity = "*"
 [target.'cfg(any(target_arch = "x86_64", target_arch = "x86"))'.dev-dependencies]
 criterion-cycles-per-byte = "0.1"
 
+[dev-dependencies.faster-utf8-validator-upstream]
+package = "faster-utf8-validator"
+git = "https://github.com/simd-lite/faster-utf8-validator-rs"
+branch = "main"
+
 [[bench]]
 name = "criterion_bench"
 harness = false

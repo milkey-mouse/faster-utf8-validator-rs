@@ -20,6 +20,9 @@ fn bench_file<T: Measurement>(c: &mut Criterion<T>, name: &str, is_valid: bool) 
     group.bench_function("std_utf8_validator", |b| {
         b.iter(|| assert!(str::from_utf8(&buf).is_ok() == is_valid))
     });
+    group.bench_function("faster_utf8_validator_upstream", |b| {
+        b.iter(|| assert!(faster_utf8_validator_upstream::validate(&buf) == is_valid))
+    });
     group.bench_function("faster_utf8_validator", |b| {
         b.iter(|| assert!(faster_utf8_validator::validate(&buf) == is_valid))
     });
